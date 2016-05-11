@@ -2,13 +2,11 @@
 
 from setuptools import setup, find_packages
 
-from .version import APP_NAME, APP_VERSION, APP_AUTHOR
-
 setup(
-    name=APP_NAME,
-    version=APP_VERSION,
+    name="gif2xls",
+    version="0.1.0",
     packages=find_packages(),
-    author=APP_AUTHOR,
+    author="Thomas Bell",
     author_email="tom.aus@outlook.com",
     url="https://github.com/bell345/gif2xls",
     description="Convert GIF images into XLS files.",
@@ -33,5 +31,10 @@ setup(
         "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.5"
     ],
-    keywords="xls gif convert xkcd"
+    keywords="xls gif convert xkcd",
+    entry_points={
+        'console_scripts': [
+            'gif2xls=gif2xls:main'
+        ]
+    }
 )

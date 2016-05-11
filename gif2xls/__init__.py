@@ -105,6 +105,3 @@ def main():
     xls = gif2xls(gif)
 
     xls.save_as(args.output)
-
-if __name__ == "__main__":
-    main()
