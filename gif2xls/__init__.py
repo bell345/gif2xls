@@ -17,11 +17,11 @@ def abort(msg):
 
 def rgba_to_int(rgba):
     r,g,b,a = rgba
-    return (a << 24) | (r << 16) | (g << 8) | b
+    return ((a&1) << 24) | (r << 16) | (g << 8) | b
 
 def add_frame_to_xls(xls, frame, name):
     width, height = frame.size
-    buf = [[0]*width]*height
+    buf = [x[:] for x in [[0]*width]*height]
 
     for i in range(width):
         for j in range(height):
@@ -38,6 +38,9 @@ def gif2xls(gif):
     palette   = gif.getpalette()
 
     xls = pyexcel.Book()
+
+    # general structure of reading GIF files using PIL from:
+    # https://stackoverflow.com/questions/10269099/pil-convert-gif-frames-to-jpg
 
     i = 0
     try:
@@ -83,13 +86,13 @@ def main():
 
     parser.add_argument("input", type=argparse.FileType('rb'),
             help="GIF image that is to be transformed into an XLS(X) file.")
-    parser.add_argument("-o", "--output", type=str,
+    parser.add_argument("-o", "--output", type=str, default="out.xls",
             help="Output XLS(X) file.")
     args = parser.parse_args()
 
 
 
-    if imghdr.what("", h=args.input.read()) != "gif":
+    if imghdr.what(None, h=args.input.read()) != "gif":
         abort("File is not a GIF encoded image.")
 
     try:
@@ -99,8 +102,11 @@ def main():
         abort("Unable to open image.")
 
     _, ext = os.path.splitext(args.output)
-    if ext == "xls" and gif.width > 256:
-        abort("XLS workbooks do not support more than 256 columns per worksheet. Support may be added in the future - for now, use an XLSX formatted output file.")
+    if ext == ".xls" and gif.width > 256:
+        abort("""\
+XLS workbooks do not support more than 256 columns per worksheet.
+Support may be added in the future - for now, use an XLSX formatted output file.\
+""")
 
     xls = gif2xls(gif)
 

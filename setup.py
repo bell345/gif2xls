@@ -1,26 +1,25 @@
 #!/usr/bin/env python3
 
+import ez_setup
+ez_setup.use_setuptools()
+
 from setuptools import setup, find_packages
 
+from gif2xls.version import APP_NAME, APP_VERSION
+
+def read(filename):
+    with open(filename) as fp:
+        return fp.read()
+
 setup(
-    name="gif2xls",
-    version="0.1.0",
+    name=APP_NAME,
+    version=APP_VERSION,
     packages=find_packages(),
     author="Thomas Bell",
     author_email="tom.aus@outlook.com",
     url="https://github.com/bell345/gif2xls",
     description="Convert GIF images into XLS files.",
-    long_description = """
-    Inspired by http://xkcd.com/1678/.
-
-    Converts GIF encoded images into Microsoft Excel formatted workbooks.
-
-    Each frame is assigned a worksheet, and each pixel is assigned a cell. In each cell is a 32-bit integer that describes the colour of that pixel in ARGB format.
-
-    An additional sheet named "Info" contains some header information, where each row contains a Name, Value pair.
-
-    Any images greater than 256 pixels wide need to use the newer .xlsx format - older .xls workbooks do not support more than 256 columns in a worksheet.
-""",
+    long_description=read("README.rst"),
     install_requires=["pyexcel>=0.2", "pyexcel-xls>=0.1", "pyexcel-xlsx>=0.1", "Pillow>=3.0"],
     license="MIT",
     classifiers=[
