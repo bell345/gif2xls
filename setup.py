@@ -26,7 +26,9 @@ setup(
         "pyexcel-xlsx>=0.1",
         "XlsxWriter>=0.8",
         "xlwt>=1.0",
-        "Pillow>=3.0"],
+        "Pillow>=3.0",
+        "future>=0.15"
+    ],
     license="MIT",
     classifiers=[
         "Development Status :: 3 - Alpha",

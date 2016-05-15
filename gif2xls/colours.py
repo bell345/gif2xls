@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+from __future__ import (absolute_import, division,
+                        print_function, unicode_literals)
+from builtins import *
 
 import xlwt
 
@@ -30,8 +33,8 @@ def int_to_rgb(i):
     return ((i & 0xFF0000) >> 16, (i & 0x00FF00) >> 8, (i & 0x0000FF))
 
 def closeness(c1, c2):
-    if type(c1) == int: c1 = int_to_rgb(c1)
-    if type(c2) == int: c2 = int_to_rgb(c2)
+    if isinstance(c1, int): c1 = int_to_rgb(c1)
+    if isinstance(c2, int): c2 = int_to_rgb(c2)
 
     r1,g1,b1 = c1
     r2,g2,b2 = c2
