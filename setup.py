@@ -20,7 +20,13 @@ setup(
     url="https://github.com/bell345/gif2xls",
     description="Convert GIF images into XLS files.",
     long_description=read("README.rst"),
-    install_requires=["pyexcel>=0.2", "pyexcel-xls>=0.1", "pyexcel-xlsx>=0.1", "Pillow>=3.0"],
+    install_requires=[
+        "pyexcel>=0.2",
+        "pyexcel-xls>=0.1",
+        "pyexcel-xlsx>=0.1",
+        "XlsxWriter>=0.8",
+        "xlwt>=1.0",
+        "Pillow>=3.0"],
     license="MIT",
     classifiers=[
         "Development Status :: 3 - Alpha",
