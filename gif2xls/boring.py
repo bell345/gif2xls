@@ -6,7 +6,6 @@ from builtins import *
 from io import BytesIO
 
 import pyexcel
-from pyexcel.ext import xls, xlsx
 from PIL import Image
 
 from .common import *

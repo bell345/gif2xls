@@ -14,7 +14,14 @@ An additional sheet named "Info" contains some header information, where each ro
 Installation
 ------------
 
-To install, either run the following as root inside the repo directory:
+`gif2xls` is now available as a PyPI_ package! Simply run either of the following from anywhere:
+
+::
+
+    pip install gif2xls        # globally, often requires root/Administrator privileges
+    pip install gif2xls --user # local to current user (add ~/.local/bin to your $PATH)
+
+To install from source, either run the following as root inside the repo directory:
 
 ::
 
@@ -46,4 +53,5 @@ The output file can either have a `.xls` or a `.xlsx` file extension - signallin
 \(C) Thomas Bell 2016, `MIT License`_.
 
 .. _xkcd: http://xkcd.com/1678/
+.. _PyPI: https://pypi.python.org/pypi
 .. _MIT License: https://opensource.org/licenses/MIT
