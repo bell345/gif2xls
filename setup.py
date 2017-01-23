@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 
-import ez_setup
-ez_setup.use_setuptools()
-
 from setuptools import setup, find_packages
 
 from gif2xls.version import APP_NAME, APP_VERSION
